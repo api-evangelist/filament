@@ -1,0 +1,31 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.filament.finance/market-makers/filament-api
+docs: https://docs.filament.finance/market-makers/filament-api
+summary:
+  types:
+  - signature
+  api_key_in: []
+  oauth2_flows: []
+  notes: >-
+    Filament uses wallet-signature authentication rather than API keys or OAuth.
+    There are no securitySchemes because the API is not described by an OpenAPI
+    document; the scheme below is captured from the published API documentation.
+schemes:
+- name: WalletSignature
+  type: signature
+  algorithm: EIP-191 personal_sign (ethers.js Wallet.signMessage)
+  library: ethers.js v5.7.2
+  description: >-
+    Every mutating request (place/cancel order, update isolated margin) carries a
+    `signature` field produced by signing the order's `orderId` with the trader's
+    private key: `signer.signMessage(orderId)`. The `account` field must be the
+    signer's wallet address in lowercase. Order ids are generated with
+    `nanoid().toLowerCase()`. There is no bearer token, API key header, or
+    session — authenticity is proven per-order by the signature.
+  signed_payload_field: orderId
+  identity_field: account
+  applies_to:
+  - POST /filament/api/v1/exchange
+  - updateIsolatedMargin payloads
+  - cancel payloads

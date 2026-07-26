@@ -1,0 +1,39 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: https://docs.filament.finance/market-makers/filament-api
+note: >-
+  No official hosted/remote MCP server was found for Filament. This is a candidate
+  tool list derived from the documented REST endpoints so an MCP server could be
+  forged. Not published by the provider.
+server:
+  name: filament
+  transport: http
+tools:
+- name: list_assets
+  description: Get all traded assets with mark price, spot price, funding rate, and index token address.
+  source_operation: GET https://orderbook.filament.finance/sei/filament/api/v1/assets
+- name: place_or_cancel_order
+  description: Place limit/market orders, cancel orders, manage collateral, and set TP/SL (typed via `type`).
+  source_operation: POST https://orderbook.filament.finance/sei/filament/api/v1/exchange
+- name: get_order_status
+  description: Retrieve the current status for multiple order ids.
+  source_operation: POST https://orderbook.filament.finance/sei/v1/orders/latest-status
+- name: list_open_orders
+  description: Paginated open orders for an account.
+  source_operation: GET https://orderbook.filament.finance/sei/v1/orders/open-orders/paginated/account/:account
+- name: list_closed_orders
+  description: Paginated closed orders for an account.
+  source_operation: GET https://orderbook.filament.finance/sei/v1/orders/closed-orders/paginated/account/:account
+- name: list_positions
+  description: Open positions for an account.
+  source_operation: GET https://orderbook.filament.finance/sei/v1/positions/trades/paginated/:account
+- name: list_trade_history
+  description: Trade execution history for an account.
+  source_operation: GET https://orderbook.filament.finance/sei/v1/positions/tradeHistory/paginated/:account
+- name: get_account_balance
+  description: Available USDC balance for an account.
+  source_operation: GET https://orderbook.filament.finance/sei/v1/accountData/balance/:account
+- name: get_position_balance
+  description: Collateral locked per asset for an account.
+  source_operation: GET https://orderbook.filament.finance/sei/v1/positions/balance/:account

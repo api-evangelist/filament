@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: filament.finance
+  https: false
+- host: docs.filament.finance
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 17 04:13:13 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: orderbook.filament.finance
+  https: false
+domains:
+- domain: filament.finance
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

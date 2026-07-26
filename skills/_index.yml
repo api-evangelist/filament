@@ -1,0 +1,17 @@
+generated: '2026-07-19'
+method: generated
+source: https://docs.filament.finance/market-makers/filament-api
+note: >-
+  Filament publishes no OpenAPI, but its REST endpoints are fully documented. This
+  skill is grounded in those real documented operations (endpoint verbatim), not
+  invented ones.
+skills:
+- file: filament-place-perpetual-order.md
+  name: Place and manage a perpetual order on Filament
+  api: https://docs.filament.finance/market-makers/filament-api
+  operations:
+  - GET /filament/api/v1/assets
+  - POST /filament/api/v1/exchange
+  - POST /v1/orders/latest-status
+  - GET /v1/orders/open-orders/paginated/account/:account
+  - GET /v1/positions/trades/paginated/:account

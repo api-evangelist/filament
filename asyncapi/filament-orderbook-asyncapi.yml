@@ -1,0 +1,86 @@
+generated: '2026-07-19'
+method: generated
+source: https://docs.filament.finance/market-makers/filament-api
+note: >-
+  Generated faithfully from Filament's documented WebSocket streaming surface. The
+  provider publishes no AsyncAPI document; this captures the real WS endpoints and
+  subscription topics as an AsyncAPI 3.0 channel map. Message payloads mirror the
+  documented REST asset/order/position shapes.
+asyncapi: 3.0.0
+info:
+  title: Filament Orderbook Streaming API
+  version: 1.0.0
+  description: >-
+    Real-time WebSocket streams for the Filament perpetual DEX on Sei: order-book
+    state, live asset price feed, and per-account order updates.
+servers:
+  book:
+    host: orderbook.filament.finance
+    protocol: wss
+    pathname: /sei/api/order-book/book-websocket
+    description: Order-book state WebSocket.
+  orders:
+    host: orderbook.filament.finance
+    protocol: wss
+    pathname: /sei/api/order-websocket
+    description: Order updates WebSocket.
+channels:
+  orderBookState:
+    address: /topic/orderBookState
+    servers:
+    - $ref: '#/servers/book'
+    description: Real-time order-book state (bids/asks) per market.
+    messages:
+      orderBookState:
+        $ref: '#/components/messages/OrderBookState'
+  livefeed:
+    address: /topic/livefeed
+    servers:
+    - $ref: '#/servers/book'
+    description: Live asset price updates (mark/spot/funding).
+    messages:
+      assetTick:
+        $ref: '#/components/messages/AssetTick'
+  orderUpdates:
+    address: /topic/order-updates/{account}
+    servers:
+    - $ref: '#/servers/orders'
+    parameters:
+      account:
+        description: Lowercase wallet address subscribed for order status changes.
+    description: Individual order status changes for a subscribed account.
+    messages:
+      orderUpdate:
+        $ref: '#/components/messages/OrderUpdate'
+operations:
+  receiveOrderBookState:
+    action: receive
+    channel:
+      $ref: '#/channels/orderBookState'
+  receiveLivefeed:
+    action: receive
+    channel:
+      $ref: '#/channels/livefeed'
+  receiveOrderUpdates:
+    action: receive
+    channel:
+      $ref: '#/channels/orderUpdates'
+components:
+  messages:
+    OrderBookState:
+      name: OrderBookState
+      summary: Snapshot/delta of order-book bids and asks for a market.
+    AssetTick:
+      name: AssetTick
+      summary: Asset price tick.
+      payload:
+        type: object
+        properties:
+          indexToken: {type: string}
+          assetName: {type: string}
+          markPrice: {type: number}
+          spotPrice: {type: number}
+          fundingRate: {type: number}
+    OrderUpdate:
+      name: OrderUpdate
+      summary: Status change for one of the subscribed account's orders.

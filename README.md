@@ -1,5 +1,9 @@
 # Filament
 
-Filament is a company surfaced as a portfolio company of pantera-capital and added to the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting the enrichment pipeline.
+Filament (Filament Finance) is a hybrid on-chain perpetual / derivatives DEX built on the Sei Network. It pairs an off-chain orderbook with a Compartment-Based (COMB) liquidity pool for deep liquidity in thin markets, offering up to 30x leverage on crypto perpetuals with USDC collateral. Filament Pro is the flagship trading platform, and the protocol exposes a signature-authenticated REST + WebSocket order-book API for market makers.
 
-Backed by: pantera-capital — https://www.filament.com/
+- Website: https://filament.finance/
+- Docs: https://docs.filament.finance/
+- API: https://docs.filament.finance/market-makers/filament-api
+- Blog: https://medium.com/@filament.finance
+- Surfaced as a portfolio lead of pantera-capital; enriched from the provider's public documentation.

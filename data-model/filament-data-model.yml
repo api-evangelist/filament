@@ -1,0 +1,59 @@
+generated: '2026-07-19'
+method: derived
+source: https://docs.filament.finance/market-makers/filament-api
+note: >-
+  Entity graph derived from the documented Filament API request/response shapes.
+  No OpenAPI $ref graph exists; relationships are inferred from documented id/field
+  references.
+entities:
+- name: Account
+  key: account
+  detail: Lowercase wallet address; root identity for balances, orders, positions.
+  fields: [account]
+- name: Asset
+  key: indexToken
+  detail: Tradable perpetual market.
+  fields: [indexToken, assetName, markPrice, spotPrice, fundingRate, maxLeverage, minLeverage]
+- name: Order
+  key: orderId
+  detail: A signed limit/market order (nanoid id, signature over the id).
+  fields: [orderId, account, indexToken, signature, isBuy, size, leverage, reduceOnly, orderType]
+- name: Position
+  key: [account, token]
+  detail: Open position resulting from filled orders.
+  fields: [token, side, entryPrice, markPrice, quantity, collateral, realizedPnL, liquidationPrice, leverage]
+- name: Trade
+  detail: Executed fill / trade-history record.
+  fields: [associatedOrderId, page, size]
+- name: Balance
+  detail: Available USDC balance and per-asset locked collateral.
+  fields: [account, balance, collateral]
+relationships:
+- from: Order
+  to: Account
+  type: belongs_to
+  via: account
+- from: Order
+  to: Asset
+  type: belongs_to
+  via: indexToken
+- from: Position
+  to: Account
+  type: belongs_to
+  via: account
+- from: Position
+  to: Asset
+  type: belongs_to
+  via: token
+- from: Account
+  to: Order
+  type: has_many
+  via: account
+- from: Account
+  to: Position
+  type: has_many
+  via: account
+- from: Trade
+  to: Order
+  type: belongs_to
+  via: associatedOrderId

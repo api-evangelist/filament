@@ -1,0 +1,19 @@
+# Filament Docs
+
+> Filament (Filament Finance) is a hybrid on-chain perpetual / derivatives DEX on the Sei Network, pairing an off-chain orderbook with a Compartment-Based (COMB) liquidity pool for deep liquidity in thin markets. Filament Pro offers up to 30x leverage on crypto perpetuals with USDC collateral, and exposes a signature-authenticated REST + WebSocket order-book API for market makers.
+
+## Filament Pro Docs
+
+- [About Filament Pro](https://docs.filament.finance/about-filament-pro.md)
+- [Orderbook](https://docs.filament.finance/fundamentals/orderbook.md)
+- [COMB (Compartment-Based) Liquidity Pool](https://docs.filament.finance/fundamentals/comb-compartment-based-liquidity-pool.md)
+- [Bridging](https://docs.filament.finance/guides/bridging.md)
+- [Connecting to Sei](https://docs.filament.finance/guides/connecting-to-sei.md)
+- [Depositing Funds](https://docs.filament.finance/guides/depositing-funds.md)
+- [Trading](https://docs.filament.finance/guides/trading.md)
+- [Providing Liquidity](https://docs.filament.finance/guides/providing-liquidity.md)
+- [Filament Credit System](https://docs.filament.finance/community/filament-credit-system.md)
+- [Trading Guilds](https://docs.filament.finance/community/trading-guilds.md)
+- [Brand Kit](https://docs.filament.finance/resources/brand-kit.md): Please adhere to these guidelines when featuring Filament in digital and print media
+- [Security Audits](https://docs.filament.finance/resources/security-audits.md)
+- [Filament API](https://docs.filament.finance/market-makers/filament-api.md)

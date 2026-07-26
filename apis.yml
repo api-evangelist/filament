@@ -1,8 +1,28 @@
 aid: filament
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/filament.png
 name: Filament
-description: 'Filament is a company surfaced as a portfolio company of pantera-capital and added to the
-  API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: 'Filament (Filament Finance) is a hybrid on-chain perpetual / derivatives
+  DEX built on the Sei Network. It pairs an off-chain orderbook with a Compartment-Based
+  (COMB) liquidity pool to deliver deep liquidity even in thin markets, offering up to
+  30x leverage on crypto perpetuals using USDC collateral and oracle-based mark prices.
+  Filament Pro is the flagship trading platform, and the project exposes a signature-authenticated
+  REST + WebSocket order-book API at orderbook.filament.finance for market makers and
+  programmatic traders. The team draws on experience from Goldman Sachs, BlackRock,
+  Persistence, and Nethermind; the protocol''s smart contracts were audited by PeckShield.
+  Added to the API Evangelist network as a portfolio-lead stub and enriched from the
+  provider''s public documentation.'
 url: https://raw.githubusercontent.com/api-evangelist/filament/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,13 +30,50 @@ x-backed-by:
 - pantera-capital
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-chain: sei
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Crypto
-apis: []
+- DeFi
+- Derivatives
+- Perpetuals
+- DEX
+- Trading
+- Blockchain
+- Sei
+- Web3
+apis:
+- name: Filament API
+  description: 'Signature-authenticated REST + WebSocket order-book API for the Filament
+    perpetual DEX on Sei. Place limit/market orders, cancel orders, manage isolated
+    collateral, set TP/SL, read tradable assets with mark/spot/funding, and stream
+    order-book state and order updates over WebSocket. Orders are authenticated by
+    signing the order id with an ethers.js wallet (no API keys).'
+  humanURL: https://docs.filament.finance/market-makers/filament-api
+  baseURL: https://orderbook.filament.finance/sei
+  tags:
+  - Perpetuals
+  - Trading
+  - Orderbook
+  - Derivatives
+  properties:
+  - type: Authentication
+    url: authentication/filament-authentication.yml
+  - type: Conventions
+    url: conventions/filament-conventions.yml
+  - type: MCPServer
+    url: mcp/filament-mcp.yml
+  - type: AsyncAPI
+    url: asyncapi/filament-orderbook-asyncapi.yml
+  - type: Lifecycle
+    url: lifecycle/filament-lifecycle.yml
+  - type: DataModel
+    url: data-model/filament-data-model.yml
+  - type: AgentSkill
+    url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,4 +81,45 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://www.filament.com/
+  url: https://filament.finance/
+- type: DeveloperPortal
+  url: https://docs.filament.finance/
+- type: Documentation
+  url: https://docs.filament.finance/
+- type: APIReference
+  url: https://docs.filament.finance/market-makers/filament-api
+- type: GettingStarted
+  url: https://docs.filament.finance/guides/trading
+- type: Blog
+  url: https://medium.com/@filament.finance
+- type: X
+  url: https://twitter.com/FilamentFinance
+- type: Sandbox
+  url: sandbox/filament-sandbox.yml
+- type: Authentication
+  url: authentication/filament-authentication.yml
+- type: Conventions
+  url: conventions/filament-conventions.yml
+- type: MCPServer
+  url: mcp/filament-mcp.yml
+- type: AsyncAPI
+  url: asyncapi/filament-orderbook-asyncapi.yml
+- type: Lifecycle
+  url: lifecycle/filament-lifecycle.yml
+- type: DataModel
+  url: data-model/filament-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/filament-llms.txt
+- type: DomainSecurity
+  url: security/filament-domain-security.yml
+- type: SecurityAudit
+  url: https://docs.filament.finance/resources/security-audits
+- type: BrandKit
+  url: https://docs.filament.finance/resources/brand-kit
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

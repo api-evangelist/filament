@@ -1,0 +1,23 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.filament.finance/market-makers/filament-api
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: Read endpoints under /v1/*; core exchange endpoint at /filament/api/v1/exchange.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: No published deprecation or Sunset-header policy found.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+environments:
+- name: mainnet
+  app: https://app.filament.finance/
+- name: testnet
+  app: https://testnet.filament.finance/
+notes: >-
+  No status page or formal SLA was found. Product updates are published via the
+  project's Medium blog and X account rather than a dated API changelog.

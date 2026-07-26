@@ -1,0 +1,22 @@
+generated: '2026-07-19'
+method: searched
+source: https://testnet.filament.finance/
+note: >-
+  Filament runs a public testnet of the Pro trading app. No published magic test
+  values (test cards / seeded tokens) exist because trades are wallet-signed on a
+  test network — the "sandbox" is the Sei testnet environment plus a testnet wallet.
+  No test values are invented here.
+environments:
+- name: testnet
+  type: sandbox
+  app: https://testnet.filament.finance/
+  network: Sei testnet
+  auth: testnet wallet signature (same wallet-signature scheme as mainnet)
+- name: mainnet
+  type: production
+  app: https://app.filament.finance/
+  network: Sei
+guides:
+  bridging: https://docs.filament.finance/guides/bridging
+  connecting_to_sei: https://docs.filament.finance/guides/connecting-to-sei
+  depositing_funds: https://docs.filament.finance/guides/depositing-funds

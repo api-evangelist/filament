@@ -1,0 +1,60 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.filament.finance/market-makers/filament-api
+docs: https://docs.filament.finance/market-makers/filament-api
+authentication:
+  style: wallet-signature
+  detail: Sign orderId with ethers.js wallet; account address (lowercase) identifies caller.
+  ref: authentication/filament-authentication.yml
+request_envelope:
+  style: typed-action
+  detail: >-
+    POST /filament/api/v1/exchange multiplexes actions via a top-level `type`
+    discriminator ("order", "cancel", "updateIsolatedMargin"). Orders are batched
+    in an `orders[]` array; cancels in a `cancels[]` array.
+order_types:
+- limit (orderType.type=limit, limit.tif=Gtc, limit.limitPrice)
+- market (orderType.type=trigger, trigger.isMarket=true, trigger.slippage)
+idempotency:
+  supported: false
+  detail: >-
+    No idempotency-key mechanism is documented. Each order carries a client-generated
+    unique `orderId` (nanoid) that also serves as the signed message, but the docs
+    do not describe replay-safe idempotent retries keyed on it.
+pagination:
+  style: page-number
+  params:
+  - page
+  - size
+  additional_filters:
+  - token
+  - side
+  - associatedOrderId (trade history, optional)
+  applies_to:
+  - GET /v1/orders/open-orders/paginated/account/:account
+  - GET /v1/orders/closed-orders/paginated/account/:account
+  - GET /v1/positions/trades/paginated/:account
+  - GET /v1/positions/tradeHistory/paginated/:account
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: Newer read endpoints are under /v1/*; the core exchange endpoint is /filament/api/v1/exchange.
+streaming:
+  transport: websocket (STOMP-style topics)
+  endpoints:
+  - wss://orderbook.filament.finance/sei/api/order-book/book-websocket
+  - wss://orderbook.filament.finance/sei/api/order-websocket
+  topics:
+  - /topic/orderBookState
+  - /topic/livefeed
+  - /topic/order-updates/{account}
+  ref: asyncapi/filament-orderbook-asyncapi.yml
+error_envelope:
+  style: http-status
+  detail: >-
+    No structured error catalog or problem+json envelope is documented; responses
+    surface standard HTTP status codes via the fetch API.
+rate_limits:
+  documented: false
+collateral: USDC
+settlement_network: Sei

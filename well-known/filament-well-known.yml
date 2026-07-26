@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: probed
+source: live probes of Filament hosts
+note: >-
+  Probed /.well-known/ discovery paths on the reachable docs host. No documents were
+  found (all 404). The API host (orderbook.filament.finance) and marketing host
+  (filament.finance) were not reachable from the probe environment (edge/TLS block),
+  so their well-known surface is unverified rather than confirmed-absent.
+hosts:
+- host: https://docs.filament.finance
+  reachable: true
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://orderbook.filament.finance
+  reachable: false
+  documents: []
+- host: https://filament.finance
+  reachable: false
+  documents: []

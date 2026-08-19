@@ -2,10 +2,8 @@ generated: '2026-07-19'
 method: derived
 status: candidate
 source: https://docs.filament.finance/market-makers/filament-api
-note: >-
-  No official hosted/remote MCP server was found for Filament. This is a candidate
-  tool list derived from the documented REST endpoints so an MCP server could be
-  forged. Not published by the provider.
+note: No official hosted/remote MCP server was found for Filament. This is a candidate tool list derived
+  from the documented REST endpoints so an MCP server could be forged. Not published by the provider.
 server:
   name: filament
   transport: http
@@ -37,3 +35,9 @@ tools:
 - name: get_position_balance
   description: Collateral locked per asset for an account.
   source_operation: GET https://orderbook.filament.finance/sei/v1/positions/balance/:account
+deployment:
+  mode: none
+  verified: derived
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census

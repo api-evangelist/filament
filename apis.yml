@@ -43,6 +43,17 @@ tags:
 - DEX
 - Trading
 - Blockchain
+- SEI
+- Web3
+tags_raw:
+- Company
+- Crypto
+- DeFi
+- Derivatives
+- Perpetuals
+- DEX
+- Trading
+- Blockchain
 - Sei
 - Web3
 apis:
@@ -55,6 +66,11 @@ apis:
   humanURL: https://docs.filament.finance/market-makers/filament-api
   baseURL: https://orderbook.filament.finance/sei
   tags:
+  - Perpetuals
+  - Trading
+  - Order Book
+  - Derivatives
+  tags_raw:
   - Perpetuals
   - Trading
   - Orderbook

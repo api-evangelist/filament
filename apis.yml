@@ -54,7 +54,7 @@ tags:
 - DEX
 - Trading
 - Blockchain
-- SEI
+- Sei
 - Web3
 tags_raw:
 - Company
@@ -79,7 +79,7 @@ apis:
   tags:
   - Perpetuals
   - Trading
-  - Order Book
+  - Orderbook
   - Derivatives
   tags_raw:
   - Perpetuals
